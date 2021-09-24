@@ -39,6 +39,7 @@ class Job(models.Model):
                                        verbose_name='工作要求')
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 null=True,
+                                verbose_name='创建人',
                                 on_delete=models.SET_NULL)
     created_datetime = models.DateTimeField(auto_now_add=True,
                                             verbose_name='创建时间')
