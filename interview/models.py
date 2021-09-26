@@ -65,7 +65,7 @@ class Candidate(models.Model):
     first_remark = models.CharField(
         max_length=128, blank=True, verbose_name='初试备注')
     first_interviewer = models.CharField(
-        max_length=128, blank=True, verbose_name='面试官')
+        max_length=128, blank=True, verbose_name='初试面试官')
 
     # second round of test
     second_score = models.DecimalField(
@@ -91,7 +91,7 @@ class Candidate(models.Model):
     second_remark = models.CharField(
         max_length=128, blank=True, verbose_name='复试备注')
     second_interviewer = models.CharField(
-        max_length=128, blank=True, verbose_name='面试官')
+        max_length=128, blank=True, verbose_name='复试面试官')
 
     # hr round of test
     hr_score = models.CharField(
@@ -115,7 +115,7 @@ class Candidate(models.Model):
     hr_remark = models.CharField(
         max_length=128, blank=True, verbose_name='终试备注')
     hr_interviewer = models.CharField(
-        max_length=128, blank=True, verbose_name='面试官')
+        max_length=128, blank=True, verbose_name='终试面试官')
 
     class Meta:
         verbose_name = '应聘者'
