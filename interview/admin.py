@@ -1,8 +1,38 @@
+from datetime import datetime
+import csv
 from django.contrib import admin
+from django.http import HttpResponse
 from interview.models import Candidate
+
+exported_fields = ('username', 'city', 'phone', 'email', 'major', 'degree', 'first_result',
+                   'first_interviewer', 'second_result', 'second_interviewer', 'hr_result', 'hr_interviewer')
+
+
+@admin.action(description='导出候选人名单')
+def export_candidates_as_csv(modeladmin, request, queryset):
+    field_list = exported_fields
+    response = HttpResponse(headers={'content-type': 'text/csv'})
+    response['content-disposition'] = "attachment; filename=recruitment-candidates-list-%s.csv" % datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+
+    writer = csv.writer(response)
+    writer.writerow(
+        [queryset.model._meta.get_field(
+            f).verbose_name.title() for f in field_list]
+    )
+
+    for obj in queryset:
+        csv_line = []
+        for f in field_list:
+            field = queryset.model._meta.get_field(f)
+            value = field.value_from_object(obj)
+            csv_line += [value]
+        writer.writerow(csv_line)
+    return response
 
 
 class CandidateAdmin(admin.ModelAdmin):
+
+    actions = [export_candidates_as_csv]
 
     exclude = ('creator', 'created_date', 'modified_date')
 
