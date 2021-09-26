@@ -6,7 +6,7 @@ FIRST_INTERVIEW_RESULTS = [('建议复试', '建议复试'), ('待定', '待定'
 SECOND_INTERVIEW_RESULTS = [('建议录用', '建议录用'), ('待定', '待定'), ('放弃', '放弃')]
 FINAL_INTERVIEW_RESULTS = [('建议录用', '建议录用'), ('待定', '待定'), ('放弃', '放弃')]
 HR_SCORES = [('S', 'S'), ('A', 'A'), ('B', 'B'), ('C', 'C')]
-
+GENDERS=[('男','男'),('女','女')]
 
 class Candidate(models.Model):
     # basic info
@@ -20,12 +20,12 @@ class Candidate(models.Model):
         max_length=128, blank=True, verbose_name='应聘职位')
     born_address = models.CharField(
         max_length=128, blank=True, verbose_name='生源地')
-    gender = models.CharField(max_length=128, blank=True, verbose_name='性别')
+    gender = models.CharField(max_length=128, choices=GENDERS, blank=True, verbose_name='性别')
     candidate_remark = models.CharField(
         max_length=128, blank=True, verbose_name='候选人备注')
 
     creator = models.CharField(
-        max_length=128, blank=True, verbose_name='候选人备注')
+        max_length=128, blank=True, verbose_name='创建人')
     last_editor = models.CharField(
         max_length=128, blank=True, verbose_name='最后编辑者')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
