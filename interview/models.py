@@ -16,22 +16,30 @@ class Candidate(models.Model):
     city = models.CharField(max_length=128, verbose_name='城市')
     phone = models.CharField(max_length=128, verbose_name='电话号码')
     email = models.EmailField(max_length=128, blank=True, verbose_name='邮箱')
-    apply_position = models.CharField(max_length=128, verbose_name='应聘职位')
-    born_address = models.CharField(max_length=128, verbose_name='生源地')
-    gender = models.CharField(max_length=128, verbose_name='性别')
-    candidate_remark = models.CharField(max_length=128, verbose_name='候选人备注')
+    apply_position = models.CharField(
+        max_length=128, blank=True, verbose_name='应聘职位')
+    born_address = models.CharField(
+        max_length=128, blank=True, verbose_name='生源地')
+    gender = models.CharField(max_length=128, blank=True, verbose_name='性别')
+    candidate_remark = models.CharField(
+        max_length=128, blank=True, verbose_name='候选人备注')
 
-    creator = models.CharField(max_length=128, verbose_name='候选人备注')
-    last_editor = models.CharField(max_length=128, verbose_name='最后编辑者')
+    creator = models.CharField(
+        max_length=128, blank=True, verbose_name='候选人备注')
+    last_editor = models.CharField(
+        max_length=128, blank=True, verbose_name='最后编辑者')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     modified_date = models.DateTimeField(auto_now=True, verbose_name='更新时间')
 
-    bachelor_school = models.CharField(max_length=128, verbose_name='学士学校')
-    master_school = models.CharField(max_length=128, verbose_name='硕士学校')
-    doctor_school = models.CharField(max_length=128, verbose_name='博士学校')
-    major = models.CharField(max_length=128, verbose_name='专业')
+    bachelor_school = models.CharField(
+        max_length=128, blank=True, verbose_name='学士学校')
+    master_school = models.CharField(
+        max_length=128, blank=True, verbose_name='硕士学校')
+    doctor_school = models.CharField(
+        max_length=128, blank=True, verbose_name='博士学校')
+    major = models.CharField(max_length=128, blank=True, verbose_name='专业')
     degree = models.CharField(
-        max_length=128, choices=DEGREES, verbose_name='学历')
+        max_length=128, choices=DEGREES, blank=True, verbose_name='学历')
 
     # exams
     test_score_of_general_ability = models.DecimalField(
@@ -53,9 +61,11 @@ class Candidate(models.Model):
     first_result = models.CharField(
         max_length=128, choices=FIRST_INTERVIEW_RESULTS, blank=True, verbose_name='初试结果')
     first_recommend_position = models.CharField(
-        max_length=128, verbose_name='推荐部门')
-    first_remark = models.CharField(max_length=128, verbose_name='初试备注')
-    first_interviewer = models.CharField(max_length=128, verbose_name='面试官')
+        max_length=128, blank=True, verbose_name='推荐部门')
+    first_remark = models.CharField(
+        max_length=128, blank=True, verbose_name='初试备注')
+    first_interviewer = models.CharField(
+        max_length=128, blank=True, verbose_name='面试官')
 
     # second round of test
     second_score = models.DecimalField(
@@ -77,9 +87,11 @@ class Candidate(models.Model):
     second_result = models.CharField(
         max_length=128, choices=SECOND_INTERVIEW_RESULTS, blank=True, verbose_name='复试结果')
     second_recommend_position = models.CharField(
-        max_length=128, verbose_name='推荐部门')
-    second_remark = models.CharField(max_length=128, verbose_name='复试备注')
-    second_interviewer = models.CharField(max_length=128, verbose_name='面试官')
+        max_length=128, blank=True, verbose_name='推荐部门')
+    second_remark = models.CharField(
+        max_length=128, blank=True, verbose_name='复试备注')
+    second_interviewer = models.CharField(
+        max_length=128, blank=True, verbose_name='面试官')
 
     # hr round of test
     hr_score = models.CharField(
@@ -100,8 +112,10 @@ class Candidate(models.Model):
         max_length=1024, blank=True, verbose_name='顾虑和不足')
     hr_result = models.CharField(
         max_length=128, choices=FINAL_INTERVIEW_RESULTS, blank=True, verbose_name='终试结果')
-    hr_remark = models.CharField(max_length=128, verbose_name='终试备注')
-    hr_interviewer = models.CharField(max_length=128, verbose_name='面试官')
+    hr_remark = models.CharField(
+        max_length=128, blank=True, verbose_name='终试备注')
+    hr_interviewer = models.CharField(
+        max_length=128, blank=True, verbose_name='面试官')
 
     class Meta:
         verbose_name = '应聘者'

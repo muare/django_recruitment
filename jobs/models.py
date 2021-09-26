@@ -45,3 +45,7 @@ class Job(models.Model):
                                             verbose_name='创建时间')
     modified_datetime = models.DateTimeField(auto_now=True,
                                              verbose_name='修改时间')
+
+    class Meta:
+        verbose_name='职位'                                            
+        verbose_name_plural='职位'
